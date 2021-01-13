@@ -1,13 +1,24 @@
-import { OpenSans_300Light_Italic, OpenSans_700Bold } from '@expo-google-fonts/open-sans';
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
+import { OpenSans_300Light_Italic, OpenSans_700Bold } from '@expo-google-fonts/open-sans';
 import { StyleSheet, Text, View, Image } from 'react-native';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+
 
 function Header() {
+  const navigation = useNavigation();
+
+  const handleOnPress = () =>{
+    navigation.navigate('Home');
+  }
+ 
   return (
-    <View style={styles.container}>
-      <Image source={require('../assets/logo.png')}/>
-      <Text style={styles.text}>DS Delivery</Text>    
-    </View>
+      <TouchableWithoutFeedback onPress={handleOnPress}>
+        <View style={styles.container}>
+          <Image source={require('../assets/logo.png')}/>
+          <Text style={styles.text}>DS Delivery</Text>    
+        </View>
+      </TouchableWithoutFeedback>   
   );
 }
 
